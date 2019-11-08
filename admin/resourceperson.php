@@ -17,8 +17,16 @@ include 'inserting/classes.php';
     }
  ?>
  <?php
- include 'includes/header.php';
- include 'includes/nav-bar.php';
+
+if($_SESSION['role'] == 'Admin'){
+include 'includes/header.php';
+include 'includes/nav-bar.php';
+}
+else
+{
+include 'includes/header.php';
+include 'includes/nav-bar-staff-student.php';
+} 
  ?>
  <div class="container mt-4">
     <!-- <h1 class="d-inline">Welcome,</h1><p class="d-inline">Admin</p> -->

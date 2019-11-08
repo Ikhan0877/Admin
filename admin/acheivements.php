@@ -14,8 +14,16 @@ if(isset($_GET['yearid']) and ($_GET['monthid'])){
     $monthnum = $year->displayMonthNum($monthid,$yearid);
 
 }
+if( $_SESSION['role'] == 'Admin'){
 include 'includes/header.php';
 include 'includes/nav-bar.php';
+}
+else
+{
+include 'includes/header.php';
+include 'includes/nav-bar-staff-student.php';
+} 
+}
 
 
  ?>

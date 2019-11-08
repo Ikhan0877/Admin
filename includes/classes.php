@@ -4,7 +4,7 @@ class User{
     public $server = "localhost";
     public $username="root";
     public $password="";
-    public $dbname ="kjcreports";
+    public $dbname ="reports";
     public $role;
     public $deptid;
     public $userid;

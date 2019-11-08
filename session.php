@@ -19,7 +19,7 @@
                      $_SESSION['deptid'] = $user->deptid;
                      $_SESSION['status'] =$user->status;
                      $_SESSION['role'] = $user->role;
-                    header('Location:staff/admin-year.php?deptid='.$deptid);
+                    header('Location:admin/admin-year.php?deptid='.$deptid);
                     // echo $_SESSION['status'] = $user->status;
                 }
                 else if($user->role == 'Student' && $user->status == 'Enable')
@@ -29,7 +29,7 @@
                      $_SESSION['status'] =$user->status;
                      $_SESSION['deptid'] = $user->deptid;
                      $_SESSION['role'] = $user->role;
-   			        header('Location:student/admin-year.php?deptid='.$deptid);
+   			        header('Location:admin/admin-year.php?deptid='.$deptid);
                     // echo $_SESSION['status'] = $user->status;
                 }
                 else if($user->role == 'Admin' && $user->status =='Enable'){

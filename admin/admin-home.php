@@ -1,7 +1,14 @@
 <?php 
 include 'includes/session.php';
+if($_SESSION['role'] == 'Admin'){
 include 'includes/header.php';
 include 'includes/nav-bar.php';
+}
+else
+{
+include 'includes/header.php';
+include 'includes/nav-bar-staff-student.php';
+} 
 include_once 'inserting/confiq.php';
 include 'inserting/classes.php';
 

@@ -1,7 +1,14 @@
 <?php 
 include 'includes/session.php';
+if($_SESSION['role'] == 'Admin'){
 include 'includes/header.php';
 include 'includes/nav-bar.php';
+}
+else
+{
+include 'includes/header.php';
+include 'includes/nav-bar-staff-student.php';
+} 
 include 'inserting/confiq.php';
 
 $sql = "SELECT yearid,year, status FROM year ";

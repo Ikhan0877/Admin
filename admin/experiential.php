@@ -1,7 +1,15 @@
 <?php 
+include 'includes/session.php';
+if($_SESSION['role'] == 'Admin'){
 include 'includes/header.php';
-include 'inserting/confiq.php';
 include 'includes/nav-bar.php';
+}
+else
+{
+include 'includes/header.php';
+include 'includes/nav-bar-staff-student.php';
+} 
+include 'inserting/confiq.php';
 include 'inserting/classes.php';
 
     if(isset($_GET['deptid'])&&isset($_GET['yearid'])&&isset($_GET['monthid'])){

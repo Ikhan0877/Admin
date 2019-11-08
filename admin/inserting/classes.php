@@ -5,7 +5,7 @@ class Year{
     public $server = "localhost";
     public $username="root";
     public $password="";
-    public $dbname ="kjcreports";
+    public $dbname ="reports";
     // count the evens
     public function countEventsDept($deptid)
     {

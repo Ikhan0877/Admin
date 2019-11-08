@@ -28,8 +28,16 @@ if(isset($_GET['deptid'])&&isset($_GET['yearid'])&&isset($_GET['monthid'])){
 
  }?>
  <?php
+
+if($_SESSION['role'] == 'Admin'){
 include 'includes/header.php';
 include 'includes/nav-bar.php';
+}
+else
+{
+include 'includes/header.php';
+include 'includes/nav-bar-staff-student.php';
+} 
  ?>
   <div class="container mt-4">
     <div class="alert alert-warning alert-dismissible">
