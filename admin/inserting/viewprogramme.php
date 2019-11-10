@@ -1,5 +1,7 @@
 <?php 
-if( $_SESSION['role'] == 'Admin'){
+session_start();
+
+if($_SESSION['role'] == 'Admin'){
 include '../includes/header.php';
 include '../includes/nav-bar.php';
 }
