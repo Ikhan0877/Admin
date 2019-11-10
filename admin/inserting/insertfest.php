@@ -76,8 +76,16 @@ if(isset($_GET['deptid'])&&isset($_GET['yearid'])&&isset($_GET['monthid']))
 }
 
  ?>
-<?php include '../includes/header.php';
+<?php 
+if( $_SESSION['role'] == 'Admin'){
+include '../includes/header.php';
 include '../includes/nav-bar.php';
+}
+else
+{
+include '../includes/header.php';
+include '../includes/nav-bar-staff-student.php';
+} 
 ?>
  <div class="container mb-4  text-center text-primary text-uppercase mt-4">
     <h2>Inter Collegiate Fest</h2>

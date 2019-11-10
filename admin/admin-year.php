@@ -101,10 +101,20 @@ $year = new Year();
 										<a class="btn btn-success " style="" href="admin-month.php?deptid=<?php $deptid =$_GET['deptid']; if(isset($deptid) ) 
 															echo $deptid; ?>&amp;yearid=<?php echo $yearid = $row['yearid']?>">View/Add Report </a>
 									</div>
+									<?php if($_SESSION['role'] == 'Student'){
+										?>
+										<div class="card-footer p-2 bg-primary" style="height: 50px;">
+										</div>
+									<?php
+
+									}else
+									{?>
+			
 									<div class="card-footer p-2 bg-primary" style="height: 50px;">
 										<a href="" style="color: white; text-decoration: none;">Generate Report</a>
 										
 									</div>
+								<?php }?>
 
 								</div>
 								

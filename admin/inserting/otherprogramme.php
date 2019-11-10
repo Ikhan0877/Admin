@@ -261,9 +261,15 @@ include 'classes.php';
 	
 ?>
 <?php 
+if( $_SESSION['role'] == 'Admin'){
 include '../includes/header.php';
 include '../includes/nav-bar.php';
-?>
+}
+else
+{
+include '../includes/header.php';
+include '../includes/nav-bar-staff-student.php';
+} 
 
 				<form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>" method="post"  enctype="multipart/form-data" autocomplete="off">
 					<input type="hidden" name="deptid" value="<?= $deptid?>">

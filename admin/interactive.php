@@ -84,8 +84,11 @@ include 'inserting/classes.php';
                                     <td>Operations</td>
                                     <td>User</td>
                                 </tr>
+
                                    
-                                    <?php if (mysqli_num_rows($result) > 0) 
+                                    <?php if($_SESSION['role'] == 'Student'){
+
+                                        if (mysqli_num_rows($result) > 0) 
                                                                     {
                                             // output data of each row
                                                     while($row = mysqli_fetch_assoc($result)) {
@@ -124,10 +127,11 @@ include 'inserting/classes.php';
                                                         <td><div class="btn-group"><a href="inserting/programme.php?deptid=<?php $deptid =$_GET['deptid']; if(isset($deptid) ) 
 															echo $deptid; else die('Some Error') ?>&amp;yearid=<?php $yearid =$_GET['yearid']; if(isset($deptid) ) 
 															echo $yearid; else die('Some Error') ?>&amp;monthid=<?php $monthid =$_GET['monthid']; if(isset($monthid) ) 
-															echo $monthid; else die('Some Error') ?>&amp;programme=interactive&amp;programmedid=<?= $row['prgmid'] ?>" class="btn btn-sm btn-primary">Edit</a> <button class="btn btn-sm btn-danger delete" value="<?= $row['prgmid'] ?>" > Delete</button> <a href="text.php?deptid=<?php $deptid =$_GET['deptid']; if(isset($deptid) ) 
-															echo $deptid; else die('Some Error') ?>&amp;yearid=<?php $yearid =$_GET['yearid']; if(isset($deptid) ) 
-															echo $yearid; else die('Some Error') ?>&amp;monthid=<?php $monthid =$_GET['monthid']; if(isset($monthid) ) 
-															echo $monthid; else die('Some Error') ?>&amp;programmedid=<?= $row['prgmid'] ?>" class="btn btn-sm btn-success">Report</a> 
+															echo $monthid; else die('Some Error') ?>&amp;programme=interactive&amp;programmedid=<?= $row['prgmid'] ?>" class="btn btn-sm btn-primary">Edit</a> <button class="btn btn-sm btn-danger delete" value="<?= $row['prgmid'] ?>" > Delete</button> 
+
+
+                                                            
+
                                                              <a href="inserting/viewprogramme.php?deptid=<?php $deptid =$_GET['deptid']; if(isset($deptid) ) 
 															echo $deptid; else die('Some Error') ?>&amp;yearid=<?php $yearid =$_GET['yearid']; if(isset($deptid) ) 
 															echo $yearid; else die('Some Error') ?>&amp;monthid=<?php $monthid =$_GET['monthid']; if(isset($monthid) ) 
@@ -142,6 +146,72 @@ include 'inserting/classes.php';
                                             {
                                                 echo "<tr>0 results</tr>";
                                             }
+                                        }
+                                        else{
+                                            if (mysqli_num_rows($result) > 0) 
+                                                                    {
+                                            // output data of each row
+                                                    while($row = mysqli_fetch_assoc($result)) {
+                                                ?>
+                                                    <tr class="">
+                                                        <td><?= $row['fromdate'] ?></td>
+                                                        <td><b> <?= $row['natureofevent'] ?></b> <br>
+                                                       <q><?= $row['title'] ?></q>
+                                                        </td>
+                                                        <td><?php if($row['verified']==0){
+                                                            echo '<span class=" badge-pill badge-danger">NOT VERFIED</span> <button value="'.$row['prgmid'].'" class="badge-pill bg-success border-0 verify">Verify </button>';
+                                                        }else{
+                                                            echo '<span class=" badge-pill badge-success">VERFIED</span> <button value="'.$row['prgmid'].'" class="badge-pill bg-danger border-0 verify">Un Verify </button>';
+                                                        } ?>
+                                                        
+                                                        </td>
+                                                        <td><?php $id = $row['resourcepersonid'];
+                                                            $res_det= "select * from reasource where resourcepersonid = '$id' ";
+                                                            $res_det_result = mysqli_query($conn, $res_det);
+                                                            if (mysqli_num_rows($res_det_result) > 0) {
+                                                                    while($res = mysqli_fetch_assoc($res_det_result)) 
+                                                                    {
+                                                                        echo $res['name'];
+                                                                        echo "<br>".$res['details'];
+                                                                    }
+                                                                }
+                                                        ?></td>
+                                                        <td class="p-0 text-center pt-2 bg-info text-light"> <?= $row['Internalcount']+$row['externalcount'] ?>
+                                                            <table class="table mb-0 table-light mt-2">
+                                                                <tr>
+                                                                    <td><?= $row['Internalcount'] ?></td>
+                                                                    <td><?= $row['externalcount'] ?></td>
+                                                                </tr>
+                                                            </table>
+                                                        </td>
+                                                        <td><div class="btn-group"><a href="inserting/programme.php?deptid=<?php $deptid =$_GET['deptid']; if(isset($deptid) ) 
+                                                            echo $deptid; else die('Some Error') ?>&amp;yearid=<?php $yearid =$_GET['yearid']; if(isset($deptid) ) 
+                                                            echo $yearid; else die('Some Error') ?>&amp;monthid=<?php $monthid =$_GET['monthid']; if(isset($monthid) ) 
+                                                            echo $monthid; else die('Some Error') ?>&amp;programme=interactive&amp;programmedid=<?= $row['prgmid'] ?>" class="btn btn-sm btn-primary">Edit</a> <button class="btn btn-sm btn-danger delete" value="<?= $row['prgmid'] ?>" > Delete</button> 
+
+
+                                                            <a href="text.php?deptid=<?php $deptid =$_GET['deptid']; if(isset($deptid) ) 
+                                                            echo $deptid; else die('Some Error') ?>&amp;yearid=<?php $yearid =$_GET['yearid']; if(isset($deptid) ) 
+                                                            echo $yearid; else die('Some Error') ?>&amp;monthid=<?php $monthid =$_GET['monthid']; if(isset($monthid) ) 
+                                                            echo $monthid; else die('Some Error') ?>&amp;programmedid=<?= $row['prgmid'] ?>" class="btn btn-sm btn-success">Report</a> 
+
+
+                                                             <a href="inserting/viewprogramme.php?deptid=<?php $deptid =$_GET['deptid']; if(isset($deptid) ) 
+                                                            echo $deptid; else die('Some Error') ?>&amp;yearid=<?php $yearid =$_GET['yearid']; if(isset($deptid) ) 
+                                                            echo $yearid; else die('Some Error') ?>&amp;monthid=<?php $monthid =$_GET['monthid']; if(isset($monthid) ) 
+                                                            echo $monthid; else die('Some Error') ?>&amp;programme=interactive&amp;programmedid=<?= $row['prgmid'] ?>" class="btn btn-sm btn-warning">View</a></div></td>
+                                                        <td><?= $row['userid']?></td>
+                                                        </tr>
+                                                        
+                                                <?php
+                                                }
+                                            } 
+                                            else 
+                                            {
+                                                echo "<tr>0 results</tr>";
+                                            }
+
+                                        }
                                     ?>
                             </table>
                         </div>

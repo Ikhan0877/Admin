@@ -118,10 +118,19 @@ if(isset($_GET['deptid'])){
 							<a class="anchor_design btn btn-success" style="text-decoration: none; color: black;" href="list-event-details.php?yearid=<?php echo $row['yearid'] ?>&amp;monthid=<?php echo $row['monthid'] ?>">View/Add Report </a><br><br> -->
 
 						</div>
-						<div class="card-footer p-2 bg-primary" style="height: 50px;">
-							<a href="text1.php?monthid=<?= $row['monthid']?>&amp;yearid=<?=$_GET['yearid']?>&amp;deptid=<?= $_GET['deptid'] ?>" style="color: white; text-decoration: none;">Generate Report</a>
+						<?php if($_SESSION['role'] == 'Student'){?>
+
+							<div class="card-footer p-2 bg-primary" style="height: 50px;">
+								
 										
-						</div>
+							</div>
+						<?php }
+						else{?>
+							<div class="card-footer p-2 bg-primary" style="height: 50px;">
+								<a href="text1.php?monthid=<?= $row['monthid']?>&amp;yearid=<?=$_GET['yearid']?>&amp;deptid=<?= $_GET['deptid'] ?>" style="color: white; text-decoration: none;">Generate Report</a>
+										
+							</div>
+						<?php }?>
 
 					</div>
 				</div>

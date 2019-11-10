@@ -23,7 +23,7 @@ else
 include 'includes/header.php';
 include 'includes/nav-bar-staff-student.php';
 } 
-}
+
 
 
  ?>
