@@ -1,5 +1,6 @@
 <?php 
 include 'includes/session.php';
+include 'includes/sessionadmin.php';
 include_once 'inserting/confiq.php';
 include 'inserting/classes.php';
 

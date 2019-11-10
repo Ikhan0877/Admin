@@ -1,5 +1,5 @@
 <?php 
-    session_start();
+
     if(empty($_SESSION['userid'])||empty($_SESSION['role'])||empty($_SESSION['deptid'])||empty($_SESSION['status'])){
         header('Location:../index.php?sessionNo');
     }
