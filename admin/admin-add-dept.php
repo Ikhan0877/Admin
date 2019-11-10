@@ -1,5 +1,6 @@
 <?php 
 include 'includes/session.php';
+include 'includes/sessionadmin.php';
 if($_SESSION['role'] == 'Admin'){
 include 'includes/header.php';
 include 'includes/nav-bar.php';
